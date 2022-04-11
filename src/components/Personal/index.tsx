@@ -17,22 +17,22 @@ const Personal = () => {
     const onSubmit = (data: any) => {
         console.log(data);
     };
-    const fillPersistedFormData = () => {
+    const fillSavedData = () => {
         setValue("firstName", persistedData?.firstName);
         setValue("lastName", persistedData?.lastName);
     };
     useEffect(() => {
-        fillPersistedFormData();
+        fillSavedData();
     }, []);
-    const watchItems = watch();
+    const watchFields = watch();
     useEffect(() => {
-        if (Object.keys(watchItems).length > 0) {
-            dispatch(firstName(watchItems?.firstName));
+        if (Object.keys(watchFields).length > 0) {
+            dispatch(firstName(watchFields?.firstName));
         }
-        if (Object.keys(watchItems).length > 0) {
-            dispatch(lastName(watchItems?.lastName));
+        if (Object.keys(watchFields).length > 0) {
+            dispatch(lastName(watchFields?.lastName));
         }
-    }, [watchItems]);
+    }, [watchFields]);
 
     return (
         <>

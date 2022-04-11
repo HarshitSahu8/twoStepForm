@@ -17,13 +17,13 @@ const Contact = () => {
     const onSubmit = (data: any) => {
         console.log(data);
     };
-    const fillPersistedFormData = () => {
+    const fillSavedData = () => {
         setValue("email", persistedData?.email);
         setValue("phoneNo", persistedData?.phoneNo);
         setValue("alternateNo", persistedData?.alternateNo);
     };
     useEffect(() => {
-        fillPersistedFormData();
+        fillSavedData();
     }, []);
 
     const watchItems = watch();
