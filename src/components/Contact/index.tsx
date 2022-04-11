@@ -11,7 +11,7 @@ import { useAppSelector } from "@redux/store";
 import { alternateNo, email, phoneNo } from "@redux/actions";
 const Contact = () => {
     const dispatch = useDispatch();
-    const persistedData = useAppSelector((state: any) => state.contactFormData);
+    const persistedData = useAppSelector((state: any) => state.ContactFormData);
     const { handleSubmit, control, register, formState, watch, setValue } =
         useForm();
     const onSubmit = (data: any) => {
@@ -23,7 +23,7 @@ const Contact = () => {
         setValue("alternateNo", persistedData?.alternateNo);
     };
     useEffect(() => {
-        if (persistedData) fillPersistedFormData();
+        fillPersistedFormData();
     }, []);
 
     const watchItems = watch();
@@ -34,6 +34,7 @@ const Contact = () => {
             dispatch(alternateNo(watchItems?.alternateNo));
         }
     }, [watchItems]);
+
     return (
         <>
             <Box

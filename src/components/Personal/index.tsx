@@ -6,24 +6,7 @@ import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppSelector } from "@redux/store";
 import { firstName, lastName } from "@redux/actions";
-// const fieldData = [
-//     {
-//         label: "First Name",
-//         name: "firstName",
-//         type: "text",
-//         autoFocus: true,
-//         required: true,
-//         placeholder: "Enter Your first Name",
-//     },
-//     {
-//         label: "Last Name",
-//         name: "lastName",
-//         type: "text",
-//         autoFocus: false,
-//         required: true,
-//         placeholder: "Enter Your Last Name",
-//     },
-// ];
+
 const Personal = () => {
     const dispatch = useDispatch();
     const persistedData = useAppSelector(
