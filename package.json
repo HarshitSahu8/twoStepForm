@@ -10,13 +10,23 @@
         "prettier": "prettier --write '**/*.{js,jsx,ts,tsx}'"
     },
     "dependencies": {
+        "@emotion/react": "^11.9.0",
+        "@emotion/styled": "^11.8.1",
+        "@material-ui/core": "^4.12.4",
+        "@mui/material": "^5.6.0",
+        "@mui/styled-engine-sc": "^5.5.2",
+        "@reduxjs/toolkit": "^1.6.0",
         "next": "12.0.7",
+        "next-compose-plugins": "^2.2.1",
+        "prettier": "^2.2.1",
         "react": "17.0.2",
         "react-dom": "17.0.2",
-        "next-compose-plugins": "^2.2.1",
+        "react-hook-form": "^7.29.0",
+        "react-hook-form-persist": "^2.1.0",
         "react-redux": "^7.2.4",
-        "@reduxjs/toolkit": "^1.6.0",
-        "prettier": "^2.2.1"
+        "redux": "^4.1.2",
+        "redux-persist": "^6.0.0",
+        "styled-components": "^5.3.5"
     },
     "devDependencies": {
         "@types/node": "^14.14.13",

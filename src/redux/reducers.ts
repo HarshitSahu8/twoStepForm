@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 
-import counter from "@redux/slices/counter";
+import PersonalFormData from "@redux/slices/personalFormData";
+import ContactFormData from "@redux/slices/ContactFormData";
 
-const rootReducer = combineReducers({ counter });
+const rootReducer = combineReducers({ PersonalFormData, ContactFormData });
 
 export type RootState = ReturnType<typeof rootReducer>;
 
