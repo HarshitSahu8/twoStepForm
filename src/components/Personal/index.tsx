@@ -5,21 +5,40 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppSelector } from "@redux/store";
-import { firstName, lastName } from "@redux/actions";
+import { firstName, lastName, personalStatus } from "@redux/actions";
+
+interface formData {
+    firstName: string;
+    lastName: string;
+}
 
 const Personal = () => {
     const dispatch = useDispatch();
     const persistedData = useAppSelector(
         (state: any) => state.PersonalFormData,
     );
-    const { handleSubmit, control, register, formState, watch, setValue } =
-        useForm();
+    const {
+        handleSubmit,
+        control,
+        register,
+        formState,
+        watch,
+        setValue,
+        trigger,
+    } = useForm<fromData>({
+        defaultValues: {},
+        criteriaMode: "all",
+        mode: "onChange",
+    });
     const onSubmit = (data: any) => {
         console.log(data);
     };
     const fillSavedData = () => {
         setValue("firstName", persistedData?.firstName);
         setValue("lastName", persistedData?.lastName);
+        if (persistedData?.firstName && persistedData?.lastName) {
+            dispatch(personalStatus(true));
+        }
     };
     useEffect(() => {
         fillSavedData();
@@ -28,9 +47,10 @@ const Personal = () => {
     useEffect(() => {
         if (Object.keys(watchFields).length > 0) {
             dispatch(firstName(watchFields?.firstName));
-        }
-        if (Object.keys(watchFields).length > 0) {
             dispatch(lastName(watchFields?.lastName));
+        }
+        if (watchFields?.firstName && watchFields?.lastName) {
+            dispatch(personalStatus(true));
         }
     }, [watchFields]);
 
@@ -58,6 +78,7 @@ const Personal = () => {
                         <Controller
                             control={control}
                             name="lastName"
+                            rules={{}}
                             render={({ field }) => (
                                 <TextField
                                     id="last-name"
@@ -71,9 +92,9 @@ const Personal = () => {
                             )}
                         />
                     </Box>
-                    <Box display="flex" justifyContent="center">
+                    {/* <Box display="flex" justifyContent="center">
                         <Button type="submit">Submit </Button>
-                    </Box>
+                    </Box> */}
                 </form>
             </Box>
         </>
