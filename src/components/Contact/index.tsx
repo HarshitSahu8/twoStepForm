@@ -13,7 +13,7 @@ const Contact = () => {
     const dispatch = useDispatch();
     const persistedData = useAppSelector((state: any) => state.ContactFormData);
     const { handleSubmit, control, register, formState, watch, setValue } =
-        useForm();
+        useForm({ mode: "onChange" });
     const onSubmit = (data: any) => {
         console.log(data);
     };
@@ -49,6 +49,16 @@ const Contact = () => {
                         <Controller
                             control={control}
                             name="email"
+                            rules={{
+                                required: {
+                                    value: true,
+                                    message: "Please Provide E-Mail",
+                                },
+                                pattern: {
+                                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                    message: "Please Provide Valid Email",
+                                },
+                            }}
                             render={({ field }) => (
                                 <TextField
                                     id="email"

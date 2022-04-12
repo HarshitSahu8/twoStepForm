@@ -63,6 +63,7 @@ const Personal = () => {
                         <Controller
                             control={control}
                             name="firstName"
+                            rules={{ required: true }}
                             render={({ field }) => (
                                 <TextField
                                     id="first-name"
@@ -78,7 +79,7 @@ const Personal = () => {
                         <Controller
                             control={control}
                             name="lastName"
-                            rules={{}}
+                            rules={{ required: true }}
                             render={({ field }) => (
                                 <TextField
                                     id="last-name"
