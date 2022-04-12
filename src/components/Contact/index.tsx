@@ -34,6 +34,18 @@ const Contact = () => {
             dispatch(alternateNo(watchItems?.alternateNo));
         }
     }, [watchItems]);
+    const [status, setStatus] = useState(true);
+    useEffect(() => {
+        if (
+            persistedData?.email &&
+            persistedData?.phoneNo &&
+            persistedData?.alternateNo
+        ) {
+            setStatus(false);
+        } else {
+            setStatus(true);
+        }
+    }, [persistedData]);
 
     return (
         <>
@@ -104,7 +116,9 @@ const Contact = () => {
                         />
                     </Box>
                     <Box display="flex" justifyContent="center">
-                        <Button type="submit">Submit </Button>
+                        <Button disable={status} type="submit">
+                            Submit
+                        </Button>
                     </Box>
                 </form>
             </Box>
