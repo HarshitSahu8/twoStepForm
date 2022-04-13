@@ -49,15 +49,12 @@ const TwoStepFrom = () => {
                 {step === 2 ? (
                     <></>
                 ) : (
-                    (console.log("status: ", statusData),
-                    (
-                        <Button
-                            disabled={activeStep}
-                            onClick={() => setStep(() => step + 1)}
-                        >
-                            Next
-                        </Button>
-                    ))
+                    <Button
+                        disabled={activeStep}
+                        onClick={() => setStep(() => step + 1)}
+                    >
+                        Next
+                    </Button>
                 )}
             </Box>
         </>

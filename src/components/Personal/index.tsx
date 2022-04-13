@@ -63,32 +63,54 @@ const Personal = () => {
                         <Controller
                             control={control}
                             name="firstName"
-                            rules={{ required: true }}
-                            render={({ field }) => (
+                            rules={{
+                                required: {
+                                    value: true,
+                                    message: "First Name is required",
+                                },
+                            }}
+                            render={({
+                                field: { onChange, value },
+                                fieldState: { error },
+                            }) => (
                                 <TextField
+                                    value={value}
                                     id="first-name"
                                     label="First Name"
                                     variant="outlined"
                                     placeholder="Enter Your First Name"
                                     fullWidth
                                     margin="normal"
-                                    {...field}
+                                    onChange={onChange}
+                                    error={!!error}
+                                    helperText={error ? error.message : ""}
                                 />
                             )}
                         />
                         <Controller
                             control={control}
                             name="lastName"
-                            rules={{ required: true }}
-                            render={({ field }) => (
+                            rules={{
+                                required: {
+                                    value: true,
+                                    message: "Last Name is required",
+                                },
+                            }}
+                            render={({
+                                field: { onChange, value },
+                                fieldState: { error },
+                            }) => (
                                 <TextField
+                                    value={value}
                                     id="last-name"
                                     label="Last Name"
                                     variant="outlined"
                                     placeholder="Enter Your Last Name"
                                     fullWidth
                                     margin="normal"
-                                    {...field}
+                                    onChange={onChange}
+                                    error={!!error}
+                                    helperText={error ? error.message : ""}
                                 />
                             )}
                         />
