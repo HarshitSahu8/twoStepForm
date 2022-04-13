@@ -124,6 +124,17 @@ const Contact = () => {
                         <Controller
                             control={control}
                             name="alternateNo"
+                            rules={{
+                                required: {
+                                    value: true,
+                                    message: "Please Provide Phone Number",
+                                },
+                                pattern: {
+                                    value: /^[0-9]{10}$/,
+                                    message:
+                                        "Please Provide Valid Phone Number",
+                                },
+                            }}
                             render={({
                                 field: { onChange, value },
                                 fieldState: { error },
