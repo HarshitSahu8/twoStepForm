@@ -71,7 +71,10 @@ const Contact = () => {
                                     message: "Please Provide Valid Email",
                                 },
                             }}
-                            render={({ field }) => (
+                            render={({
+                                field: { onChange, value },
+                                fieldState: { error },
+                            }) => (
                                 <TextField
                                     id="email"
                                     label="E-mail"
@@ -79,7 +82,9 @@ const Contact = () => {
                                     placeholder="Enter Your E-mail Address"
                                     fullWidth
                                     margin="normal"
-                                    {...field}
+                                    onChange={onChange}
+                                    error={!!error}
+                                    helperText={error ? error.message : ""}
                                 />
                             )}
                         />
@@ -87,22 +92,42 @@ const Contact = () => {
                         <Controller
                             control={control}
                             name="phoneNo"
-                            render={({ field }) => (
+                            rules={{
+                                required: {
+                                    value: true,
+                                    message: "Please Provide Phone Number",
+                                },
+                                pattern: {
+                                    value: /^[0-9]{10}$/,
+                                    message:
+                                        "Please Provide Valid Phone Number",
+                                },
+                            }}
+                            render={({
+                                field: { onChange, value },
+                                fieldState: { error },
+                            }) => (
                                 <TextField
+                                    value={value}
                                     id="phone-number"
                                     label="Phone Number"
                                     variant="outlined"
                                     placeholder="Enter Your Phone Number"
                                     fullWidth
                                     margin="normal"
-                                    {...field}
+                                    onChange={onChange}
+                                    error={!!error}
+                                    helperText={error ? error.message : ""}
                                 />
                             )}
                         />
                         <Controller
                             control={control}
                             name="alternateNo"
-                            render={({ field }) => (
+                            render={({
+                                field: { onChange, value },
+                                fieldState: { error },
+                            }) => (
                                 <TextField
                                     id="alternate-phone"
                                     label="Alternate Phone"
@@ -110,15 +135,15 @@ const Contact = () => {
                                     placeholder="Enter Your Alternate Phone"
                                     fullWidth
                                     margin="normal"
-                                    {...field}
+                                    onChange={onChange}
+                                    error={!!error}
+                                    helperText={error ? error.message : ""}
                                 />
                             )}
                         />
                     </Box>
                     <Box display="flex" justifyContent="center">
-                        <Button disable={status} type="submit">
-                            Submit
-                        </Button>
+                        <Button type="submit">Submit</Button>
                     </Box>
                 </form>
             </Box>
